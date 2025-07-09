@@ -37,11 +37,13 @@ jobs:
     - name: Install Ubuntu Binaries
       if: matrix.os == 'ubuntu-latest'
       run: |
-        sudo apt-get update && \
+        sudo apt-get update
         sudo apt-get install -qy libpq-dev libsasl2-dev
     - name: Install Ubuntu Puppeteer dependencies (required for mermaid-cli)
       if: matrix.os == 'ubuntu-latest'
-      run: sudo sh scripts/install-puppeteer-ubuntu-dependencies.sh
+      run: |
+        ldd chrome | grep not
+        sudo sh scripts/install-puppeteer-ubuntu-dependencies.sh
     - uses: actions/setup-node@v4
       with:
         node-version: 18
