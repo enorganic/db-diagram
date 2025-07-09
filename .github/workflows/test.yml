@@ -47,7 +47,7 @@ jobs:
         node-version: 18
     - name: Install mermaid-cli (mmdc)
       run: |
-        npm install -g playwright@latest && \
+        npm install -g playwright@latest && \\
         npm install -g @mermaid-js/mermaid-cli
     - name: Install Hatch
       uses: pypa/hatch@install
