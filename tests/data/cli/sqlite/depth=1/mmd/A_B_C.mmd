@@ -1,0 +1,22 @@
+erDiagram
+    A_B_C {
+        INTEGER A_ID PK, FK
+        INTEGER B_ID PK, FK
+        INTEGER C_ID PK, FK
+        VARCHAR NAME
+        DATETIME UPDATED
+    }
+    A_B_C }o--|| A_B : "A_ID, B_ID"
+    A_B_C }o--|| B_C : "B_ID, C_ID"
+    A_B {
+        INTEGER A_ID PK, FK
+        INTEGER B_ID PK, FK
+        VARCHAR NAME
+        DATETIME UPDATED
+    }
+    B_C {
+        INTEGER B_ID PK, FK
+        INTEGER C_ID PK, FK
+        VARCHAR NAME
+        DATETIME UPDATED
+    }
