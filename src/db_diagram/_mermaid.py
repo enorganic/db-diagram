@@ -118,9 +118,7 @@ def _iter_table_mermaid_entity(
             else (
                 " PK"
                 if column.primary_key
-                else " FK"
-                if column.foreign_keys
-                else ""
+                else " FK" if column.foreign_keys else ""
             )
         )
         yield f"        {column_type} {column.name}{key}"
@@ -353,14 +351,17 @@ def write_markdown(  # noqa: C901
             if image_directory:
                 if TYPE_CHECKING:
                     assert isinstance(image_directory, Path)
+                image_path: str = str(
+                    image_directory.joinpath(table_name)
+                ).replace("\\", "/")
                 path_io.write(
                     f"\n{header} {table_name}\n\n"
                     f"![{table_name}]"
-                    f"({image_directory.joinpath(table_name)!s}"
+                    f"({image_path}"
                     f".mmd.{image_format})\n"
                     if include_sub_header
                     else f"\n![{table_name}]"
-                    f"({image_directory.joinpath(table_name)!s}"
+                    f"({image_path}"
                     f".mmd.{image_format})\n"
                 )
             else:
@@ -370,7 +371,7 @@ def write_markdown(  # noqa: C901
                     f"{mermaid_diagram}\n"
                     "```\n"
                     if include_sub_header
-                    else f"\n```mermaid\n" f"{mermaid_diagram}\n" "```\n"
+                    else f"\n```mermaid\n{mermaid_diagram}\n```\n"
                 )
 
 
