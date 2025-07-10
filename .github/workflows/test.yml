@@ -34,24 +34,20 @@ jobs:
         - 3.13
     steps:
     - uses: actions/checkout@v4
-    - name: Install Ubuntu Binaries
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        sudo apt-get update
-        sudo apt-get install -qy libpq-dev libsasl2-dev chromium-browser
-        aa-exec -h
-    # - name: Install Ubuntu Puppeteer dependencies (required for mermaid-cli)
-    #   uses: tj-actions/puppeteer@v5
-      # if: matrix.os == 'ubuntu-latest'
-      # run: sudo sh scripts/install-puppeteer-ubuntu-dependencies.sh
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 18.19
-    - name: Install mermaid-cli (mmdc)
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        aa-exec --profile=chrome npm install -g playwright@latest
-        aa-exec --profile=chrome npm install -g @mermaid-js/mermaid-cli
+    # - name: Install Ubuntu PostgreSQL Binaries
+    #   if: matrix.os == 'ubuntu-latest'
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -qy libpq-dev libsasl2-dev chromium-browser
+    #     aa-exec -h
+    # - uses: actions/setup-node@v4
+    #   with:
+    #     node-version: 18.19
+    # - name: Install mermaid-cli (mmdc)
+    #   if: matrix.os == 'ubuntu-latest'
+    #   run: |
+    #     aa-exec --profile=chrome npm install -g playwright@latest
+    #     aa-exec --profile=chrome npm install -g @mermaid-js/mermaid-cli
     - name: Install Hatch
       uses: pypa/hatch@install
     - name: test
