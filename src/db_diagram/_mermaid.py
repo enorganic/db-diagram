@@ -47,6 +47,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import tempfile
 from collections import deque
 from concurrent.futures import ProcessPoolExecutor
@@ -431,6 +432,59 @@ def which_aa_exec() -> tuple[str, ...]:
     if aa_exec:
         return (aa_exec, "--profile=chrome")
     return ()
+
+
+# NPM Install scripts obtained from
+# https://nodejs.org/en/download
+
+_POSIX_INSTALL_NPM: str = r"""
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+# Download and install Node.js:
+nvm install node
+"""
+
+_WINDOWS_INSTALL_NPM: str = """
+# Download and install Chocolatey:
+powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
+# Download and install Node.js:
+choco install nodejs
+"""
+
+
+@cache
+def install_npm(*, force: bool = False) -> str:
+    """
+    Determine if `npm` is installed and return the command.
+
+    Parameters:
+        force: If True, force installation of npm even if it is already
+            installed.
+    """
+    npm: str | None = which("npm")
+    if npm and not force:
+        return npm
+    if not force:
+        try:
+            check_call((*which_aa_exec(), "npm", "--version"))
+        except Exception:  # noqa: BLE001 S110
+            pass
+        else:
+            return "npm"
+    # Install node.js
+    if sys.platform.startswith("win"):
+        check_call(
+            _WINDOWS_INSTALL_NPM.strip(),
+            shell=True,  # noqa: S602
+        )
+    else:
+        check_call(
+            _POSIX_INSTALL_NPM.strip(),
+            shell=True,  # noqa: S602
+        )
+    return which("npm") or "npm"
 
 
 @cache
