@@ -538,6 +538,16 @@ based on an existing database <a href="https://docs.sqlalchemy.org/en/20/core/en
 <p>You can install <code>db-diagram</code> with pip:</p>
 <div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>db-diagram
 </code></pre></div>
+<p>You will also need to have libraries installed for the
+<a href="https://docs.sqlalchemy.org/en/latest/dialects/">SQLAlchemy dialect</a>
+corresponding to your database, unless you are using MySQL/MariaDB
+or SQLite. For convenience, installation extras are defined for a handful of
+dialects:</p>
+<ul>
+<li><code>pip3 install 'db-diagram[postgresql]'</code></li>
+<li><code>pip3 install 'db-diagram[snowflake]'</code></li>
+<li><code>pip3 install 'db-diagram[databricks]'</code></li>
+</ul>
 <h2 id="usage">Usage</h2>
 <p>You can utilize <code>db-diagram</code> as a
 <a href="https://db-diagram.enorganic.or/cli/">CLI</a> (from a shell or command prompt),
