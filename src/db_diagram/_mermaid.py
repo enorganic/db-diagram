@@ -119,9 +119,7 @@ def _iter_table_mermaid_entity(
             else (
                 " PK"
                 if column.primary_key
-                else " FK"
-                if column.foreign_keys
-                else ""
+                else " FK" if column.foreign_keys else ""
             )
         )
         yield f"        {column_type} {column.name}{key}"
@@ -438,18 +436,13 @@ def which_aa_exec() -> tuple[str, ...]:
 # https://nodejs.org/en/download
 
 _POSIX_INSTALL_NPM: str = r"""
-# Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-# in lieu of restarting the shell
 \. "$HOME/.nvm/nvm.sh"
-# Download and install Node.js:
 nvm install node
 """
 
 _WINDOWS_INSTALL_NPM: str = r"""
-# Download and install Chocolatey:
 powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
-# Download and install Node.js:
 choco install nodejs
 """
 
