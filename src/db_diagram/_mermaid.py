@@ -118,7 +118,9 @@ def _iter_table_mermaid_entity(
             else (
                 " PK"
                 if column.primary_key
-                else " FK" if column.foreign_keys else ""
+                else " FK"
+                if column.foreign_keys
+                else ""
             )
         )
         yield f"        {column_type} {column.name}{key}"
