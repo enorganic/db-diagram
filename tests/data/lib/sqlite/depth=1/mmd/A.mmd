@@ -1,0 +1,13 @@
+erDiagram
+    A {
+        INTEGER A_ID PK
+        VARCHAR NAME
+        DATETIME UPDATED
+    }
+    A_B {
+        INTEGER A_ID PK, FK
+        INTEGER B_ID PK, FK
+        VARCHAR NAME
+        DATETIME UPDATED
+    }
+    A_B }o--|| A : "A_ID"

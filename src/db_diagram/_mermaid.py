@@ -423,17 +423,26 @@ def write_mermaid_markdown(
             path_io.write(mermaid_diagram)
 
 
+def which_aa_exec() -> tuple[str, ...]:
+    aa_exec: str | None = which("aa-exec")
+    if aa_exec:
+        return (aa_exec, "--profile=chrome")
+    return ()
+
+
 @cache
-def install_mmdc() -> str:
+def install_mmdc() -> tuple[str, ...]:
     """
     Determine if `mmdc` is installed and return the command.
     """
+    aa_exec: tuple[str, ...] = which_aa_exec()
     mmdc: str | None = which("mmdc")
     if mmdc:
-        return mmdc
+        return (*aa_exec, mmdc)
     try:
         check_call(
             (
+                *aa_exec,
                 "mmdc",
                 "--version",
             )
@@ -441,15 +450,16 @@ def install_mmdc() -> str:
     except Exception:  # noqa: BLE001
         check_call(
             (
+                *aa_exec,
                 which("npm") or "npm",
                 "install",
                 "-g",
                 "@mermaid-js/mermaid-cli",
             )
         )
-        return which("mmdc") or "mmdc"
+        return (*aa_exec, which("mmdc") or "mmdc")
     else:
-        return "mmdc"
+        return (*aa_exec, "mmdc")
 
 
 @cache
@@ -466,12 +476,14 @@ def _get_config_file(**kwargs: Hashable) -> str:
     return file.name
 
 
-def _write_image(arguments: tuple[str, str, Path, str, str, str, str]) -> None:
+def _write_image(
+    arguments: tuple[str, str, Path, str, tuple[str, ...], str, str],
+) -> None:
     table_name: str
     mermaid_diagram: str
     directory: Path
     config_file: str
-    mmdc: str
+    mmdc: tuple[str, ...]
     background_color: str
     format_: str
     (
@@ -490,7 +502,7 @@ def _write_image(arguments: tuple[str, str, Path, str, str, str, str]) -> None:
             mmd_io.write(mermaid_diagram)
     svg_path: Path = directory / f"{table_name}.mmd.{format_}"
     command: tuple[str, ...] = (
-        mmdc,
+        *mmdc,
         "-i",
         str(mmd_path),
         "-o",
@@ -547,7 +559,7 @@ def write_mermaid_images(
         metadata_source = (metadata_source,)
     elif not isinstance(metadata_source, MetaData):
         metadata_source = tuple(metadata_source)
-    mmdc: str = install_mmdc()
+    mmdc: tuple[str, ...] = install_mmdc()
     if isinstance(directory, str):
         directory = Path(directory)
     if not config_file:
@@ -556,7 +568,7 @@ def write_mermaid_images(
         config_file = str(config_file)
     os.makedirs(directory, exist_ok=True)
     args: tuple[tuple[str, ...], ...]
-    arguments: Iterable[tuple[str | Path | None, ...]] = (
+    arguments: Iterable[tuple[str | Path | tuple | None, ...]] = (
         (*args, directory, config_file, mmdc, background_color, format_)
         for args in iter_tables_mermaid_diagrams(
             metadata_source,
