@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import functools
 import os
-import sys
 from itertools import chain
-from traceback import format_exception
 from typing import TYPE_CHECKING, Any
 
 from sqlalchemy import URL, Column, Connection, Engine, MetaData, create_engine
@@ -60,16 +58,6 @@ def as_cached_tuple(
       sub-classes?
     """
     return functools.lru_cache(maxsize=maxsize, typed=typed)(as_tuple)
-
-
-def get_exception_text() -> str:
-    """
-    When called within an exception, this function returns a text
-    representation of the error matching what is found in
-    `traceback.print_exception`, but is returned as a string value rather than
-    printing.
-    """
-    return "".join(format_exception(*sys.exc_info()))
 
 
 def iter_referenced_tables(
