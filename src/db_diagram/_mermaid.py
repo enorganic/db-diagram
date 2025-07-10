@@ -476,7 +476,7 @@ def install_npm(*, force: bool = False) -> str:
     # Install node.js
     if sys.platform.startswith("win"):
         check_call(
-            _WINDOWS_INSTALL_NPM.strip(),
+            _WINDOWS_INSTALL_NPM.strip().replace("\n", "\r\n"),
             shell=True,  # noqa: S602
         )
     else:
