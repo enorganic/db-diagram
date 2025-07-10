@@ -469,18 +469,19 @@ def install_npm(*, force: bool = False) -> str:
         else:
             return "npm"
     # Install node.js
+    line: str
     if sys.platform.startswith("win"):
-        line: str
         for line in _WINDOWS_INSTALL_NPM.splitlines():
             check_call(
                 line,
                 shell=True,  # noqa: S602
             )
     else:
-        check_call(
-            _POSIX_INSTALL_NPM.strip(),
-            shell=True,  # noqa: S602
-        )
+        for line in _POSIX_INSTALL_NPM.splitlines():
+            check_call(
+                line,
+                shell=True,  # noqa: S602
+            )
     return which("npm") or "npm"
 
 
