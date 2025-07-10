@@ -119,9 +119,7 @@ def _iter_table_mermaid_entity(
             else (
                 " PK"
                 if column.primary_key
-                else " FK"
-                if column.foreign_keys
-                else ""
+                else " FK" if column.foreign_keys else ""
             )
         )
         yield f"        {column_type} {column.name}{key}"
@@ -446,7 +444,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 nvm install node
 """
 
-_WINDOWS_INSTALL_NPM: str = """
+_WINDOWS_INSTALL_NPM: str = r"""
 # Download and install Chocolatey:
 powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
 # Download and install Node.js:
@@ -461,7 +459,7 @@ def install_npm(*, force: bool = False) -> str:
 
     Parameters:
         force: If True, force installation of npm even if it is already
-            installed.
+            installed. For testing purposes only.
     """
     npm: str | None = which("npm")
     if npm and not force:
