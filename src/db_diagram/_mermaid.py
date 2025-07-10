@@ -439,7 +439,7 @@ def which_aa_exec() -> tuple[str, ...]:
 
 _POSIX_INSTALL_NPM: str = r"""
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-\. "$HOME/.nvm/nvm.sh"
+. "$HOME/.nvm/nvm.sh"
 nvm install node
 """
 
