@@ -119,7 +119,9 @@ def _iter_table_mermaid_entity(
             else (
                 " PK"
                 if column.primary_key
-                else " FK" if column.foreign_keys else ""
+                else " FK"
+                if column.foreign_keys
+                else ""
             )
         )
         yield f"        {column_type} {column.name}{key}"
@@ -468,10 +470,12 @@ def install_npm(*, force: bool = False) -> str:
             return "npm"
     # Install node.js
     if sys.platform.startswith("win"):
-        check_call(
-            _WINDOWS_INSTALL_NPM.strip().replace("\n", "\r\n"),
-            shell=True,  # noqa: S602
-        )
+        line: str
+        for line in _WINDOWS_INSTALL_NPM.splitlines():
+            check_call(
+                line,
+                shell=True,  # noqa: S602
+            )
     else:
         check_call(
             _POSIX_INSTALL_NPM.strip(),
