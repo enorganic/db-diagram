@@ -308,7 +308,7 @@ def write_markdown(  # noqa: C901
     specified metadata or tables, to the specified path.
 
     Parameters:
-        tables: SQLAlchemy metadata, tables, or a connection string
+        metadata_source: SQLAlchemy metadata, tables, or a connection string
         path: The path to which to write the markdown document.
         title: The title of the markdown document. If not specified,
             the file name (sans extension) will be used as the title.
@@ -392,12 +392,10 @@ def write_mermaid_markdown(
     base class in the specified directory.
 
     Parameters:
-        metadata: A SQLAlchemy database connection, connection string, metadata
-            instance, or tables
+        metadata_source: A SQLAlchemy database connection, connection string,
+            metadata instance, or tables
         directory: The directory under which to which to write the
             mermaid markdown documents.
-        title: The title of the markdown document. If not specified,
-            the file name (sans extension) will be used as the title.
         depth: The depth of the relationship graph to include in each
             diagram
         include: Include only tables and views matching the
@@ -539,7 +537,7 @@ def _write_image(
     config_file: str
     mmdc: tuple[str, ...]
     background_color: str
-    format_: str
+    image_format: str
     (
         table_name,
         mermaid_diagram,
@@ -547,14 +545,14 @@ def _write_image(
         config_file,
         mmdc,
         background_color,
-        format_,
+        image_format,
     ) = arguments
     mmd_path: Path = directory / f"{table_name}.mmd"
     mmd_exists: bool = mmd_path.exists()
     if not mmd_exists:
         with mmd_path.open("w", newline="\n") as mmd_io:
             mmd_io.write(mermaid_diagram)
-    svg_path: Path = directory / f"{table_name}.mmd.{format_}"
+    svg_path: Path = directory / f"{table_name}.mmd.{image_format}"
     command: tuple[str, ...] = (
         *mmdc,
         "-i",
@@ -577,7 +575,7 @@ def write_mermaid_images(
     ),
     directory: str | Path,
     *,
-    format_: str = "svg",
+    image_format: str = "svg",
     depth: int = 1,
     config_file: str | Path | None = None,
     background_color: str | None = "transparent",
@@ -593,7 +591,7 @@ def write_mermaid_images(
             or metadata from which to derive schema information
         directory:
             The directory under which to write the images.
-        format: svg | png
+        image_format: svg | png
         config_file: A path to a [mermaid config file](
             https://mermaid.js.org/config/schema-docs/config.html)
         background_color: A CSS background color
@@ -623,7 +621,7 @@ def write_mermaid_images(
     os.makedirs(directory, exist_ok=True)
     args: tuple[tuple[str, ...], ...]
     arguments: Iterable[tuple[str | Path | tuple | None, ...]] = (
-        (*args, directory, config_file, mmdc, background_color, format_)
+        (*args, directory, config_file, mmdc, background_color, image_format)
         for args in iter_tables_mermaid_diagrams(
             metadata_source,
             depth=depth,

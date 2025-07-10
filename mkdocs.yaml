@@ -6,7 +6,34 @@ nav:
 - Introduction: 'index.md'
 - CLI Reference: 'cli.md'
 - API Reference: 'api.md'
+- Examples:
+    - Overview: 'examples/index.md'
+    - Depth=1:
+      - ab_*: 'examples/airflow/depth=1/ab-diagrams.md'
+      - dag_*: 'examples/airflow/depth=1/dag-diagrams.md'
+      - asset_*: 'examples/airflow/depth=1/asset-diagrams.md'
+      - task_*: 'examples/airflow/depth=1/task-diagrams.md'
+      - other: 'examples/airflow/depth=1/other-diagrams.md'
+      - (all): 'examples/airflow/depth=1/diagrams.md'
+    - Depth=2:
+      - ab_*: 'examples/airflow/depth=2/ab-diagrams.md'
+      - dag_*: 'examples/airflow/depth=2/dag-diagrams.md'
+      - asset_*: 'examples/airflow/depth=2/asset-diagrams.md'
+      - task_*: 'examples/airflow/depth=2/task-diagrams.md'
+      - other: 'examples/airflow/depth=2/other-diagrams.md'
+      - (all): 'examples/airflow/depth=2/diagrams.md'
+    - Depth=3:
+      - ab_*: 'examples/airflow/depth=3/ab-diagrams.md'
+      - dag_*: 'examples/airflow/depth=3/dag-diagrams.md'
+      - asset_*: 'examples/airflow/depth=3/asset-diagrams.md'
+      - task_*: 'examples/airflow/depth=3/task-diagrams.md'
+      - other: 'examples/airflow/depth=3/other-diagrams.md'
+      - (all): 'examples/airflow/depth=3/diagrams.md'
+    - "Depth=1 (SVG)": 'examples/airflow/depth=1/diagrams-svg.md'
+    - "Depth=2 (SVG)": 'examples/airflow/depth=2/diagrams-svg.md'
+    - "Depth=3 (SVG)": 'examples/airflow/depth=3/diagrams-svg.md'
 - Contributing: 'contributing.md'
+- Report a Bug: https://github.com/enorganic/db-diagram/issues/new
 theme:
   name: material
   color_mode: auto
@@ -34,9 +61,13 @@ theme:
         icon: material/toggle-switch-off
         name: Switch to system preference
 plugins:
-  - mkdocs-jupyter
   - search
   - autorefs
+  - mermaid2:
+      arguments:
+        securityLevel: 'loose'
+        theme: |
+          ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
   - mkdocstrings:
       default_handler: python
       handlers:

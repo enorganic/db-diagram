@@ -67,6 +67,9 @@ format:
 	hatch run mypy && \
 	echo "Format Successful!"
 
+examples:
+	hatch run python scripts/update_docs_airflow_examples.py
+
 docs:
 	hatch run docs:mkdocs build && \
 	hatch run docs:mkdocs serve

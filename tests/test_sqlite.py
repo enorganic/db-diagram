@@ -88,14 +88,14 @@ def test_sqlite(sqlite_engine: Engine) -> None:
             sqlite_engine,
             directory=directory / f"depth={depth}/svg",
             depth=depth,
-            format_="svg",
+            image_format="svg",
             theme="dark",
         )
         write_mermaid_images(
             sqlite_engine,
             directory=directory / f"depth={depth}/png",
             depth=depth,
-            format_="png",
+            image_format="png",
         )
         write_markdown(
             sqlite_engine,

@@ -141,7 +141,7 @@ def main() -> None:
         write_mermaid_images(
             namespace.url,
             directory=namespace.scalable_vector_graphics,
-            format_="svg",
+            image_format="svg",
             config_file=namespace.config_file,
             background_color=namespace.background_color,
             include=tuple(namespace.include),
@@ -153,7 +153,7 @@ def main() -> None:
         write_mermaid_images(
             namespace.url,
             directory=namespace.portable_network_graphics,
-            format_="png",
+            image_format="png",
             config_file=namespace.config_file,
             background_color=namespace.background_color,
             include=tuple(namespace.include),
