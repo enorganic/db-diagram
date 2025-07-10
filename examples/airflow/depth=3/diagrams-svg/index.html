@@ -1,0 +1,2418 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://db-diagram.enorganic.org/examples/airflow/depth%3D3/diagrams-svg/">
+      
+      
+        <link rel="prev" href="../../depth%3D2/diagrams-svg/">
+      
+      
+        <link rel="next" href="../../../../contributing/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Depth=3 (SVG) - db-diagram</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/style.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#airflow-postgresql-database-diagrams" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="db-diagram" class="md-header__button md-logo" aria-label="db-diagram" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            db-diagram
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Depth=3 (SVG)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enorganic/db-diagram/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="db-diagram" class="md-nav__button md-logo" aria-label="db-diagram" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    db-diagram
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enorganic/db-diagram/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Depth=1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Depth=1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/ab-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ab_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/dag-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    dag_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/asset-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asset_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/task-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    task_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/other-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    other
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    (all)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Depth=2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Depth=2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/ab-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ab_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/dag-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    dag_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/asset-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asset_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/task-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    task_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/other-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    other
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    (all)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Depth=3
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Depth=3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ab_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dag-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    dag_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../asset-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asset_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    task_*
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    other
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    (all)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D1/diagrams-svg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Depth=1 (SVG)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../depth%3D2/diagrams-svg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Depth=2 (SVG)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Depth=3 (SVG)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Depth=3 (SVG)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ab_group" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_group_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_group_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_permission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_permission_view" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_permission_view
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_permission_view_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_permission_view_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_register_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_register_user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_user_group" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_user_group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_user_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_user_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_view_menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_view_menu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alembic_version" class="md-nav__link">
+    <span class="md-ellipsis">
+      alembic_version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alembic_version_fab" class="md-nav__link">
+    <span class="md-ellipsis">
+      alembic_version_fab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_active" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_active
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_alias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_alias_asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_alias_asset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_alias_asset_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_alias_asset_event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_dag_run_queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_dag_run_queue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_trigger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backfill" class="md-nav__link">
+    <span class="md-ellipsis">
+      backfill
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backfill_dag_run" class="md-nav__link">
+    <span class="md-ellipsis">
+      backfill_dag_run
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#callback_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      callback_request
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery_taskmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      celery_taskmeta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery_tasksetmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      celery_tasksetmeta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      connection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_bundle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_code" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_owner_attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_owner_attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_priority_parsing_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_priority_parsing_request
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_run" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_run
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_run_note" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_run_note
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_alias_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_alias_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_name_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_name_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_uri_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_uri_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_tag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_version" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_warning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dagrun_asset_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      dagrun_asset_event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deadline" class="md-nav__link">
+    <span class="md-ellipsis">
+      deadline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      import_error
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log_template" class="md-nav__link">
+    <span class="md-ellipsis">
+      log_template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendered_task_instance_fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      rendered_task_instance_fields
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialized_dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      serialized_dag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slot_pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      slot_pool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_instance_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_instance_history
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_instance_note" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_instance_note
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_outlet_asset_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_outlet_asset_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_reschedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_reschedule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      trigger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      variable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      xcom
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/enorganic/db-diagram/issues/new" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report a Bug
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ab_group" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_group_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_group_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_permission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_permission_view" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_permission_view
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_permission_view_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_permission_view_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_register_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_register_user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_user_group" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_user_group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_user_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_user_role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab_view_menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab_view_menu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alembic_version" class="md-nav__link">
+    <span class="md-ellipsis">
+      alembic_version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alembic_version_fab" class="md-nav__link">
+    <span class="md-ellipsis">
+      alembic_version_fab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_active" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_active
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_alias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_alias_asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_alias_asset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_alias_asset_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_alias_asset_event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_dag_run_queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_dag_run_queue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset_trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      asset_trigger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backfill" class="md-nav__link">
+    <span class="md-ellipsis">
+      backfill
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backfill_dag_run" class="md-nav__link">
+    <span class="md-ellipsis">
+      backfill_dag_run
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#callback_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      callback_request
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery_taskmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      celery_taskmeta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery_tasksetmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      celery_tasksetmeta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      connection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_bundle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_code" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_owner_attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_owner_attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_priority_parsing_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_priority_parsing_request
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_run" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_run
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_run_note" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_run_note
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_alias_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_alias_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_name_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_name_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_schedule_asset_uri_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_schedule_asset_uri_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_tag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_version" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag_warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      dag_warning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dagrun_asset_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      dagrun_asset_event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deadline" class="md-nav__link">
+    <span class="md-ellipsis">
+      deadline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      import_error
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log_template" class="md-nav__link">
+    <span class="md-ellipsis">
+      log_template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendered_task_instance_fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      rendered_task_instance_fields
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialized_dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      serialized_dag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slot_pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      slot_pool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_instance_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_instance_history
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_instance_note" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_instance_note
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_outlet_asset_reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_outlet_asset_reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task_reschedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      task_reschedule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      trigger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      variable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      xcom
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="airflow-postgresql-database-diagrams">Airflow PostgreSQL Database Diagrams</h1>
+<h2 id="ab_group">ab_group</h2>
+<p><img alt="ab_group" src="../svg/ab_group.mmd.svg" /></p>
+<h2 id="ab_group_role">ab_group_role</h2>
+<p><img alt="ab_group_role" src="../svg/ab_group_role.mmd.svg" /></p>
+<h2 id="ab_permission">ab_permission</h2>
+<p><img alt="ab_permission" src="../svg/ab_permission.mmd.svg" /></p>
+<h2 id="ab_permission_view">ab_permission_view</h2>
+<p><img alt="ab_permission_view" src="../svg/ab_permission_view.mmd.svg" /></p>
+<h2 id="ab_permission_view_role">ab_permission_view_role</h2>
+<p><img alt="ab_permission_view_role" src="../svg/ab_permission_view_role.mmd.svg" /></p>
+<h2 id="ab_register_user">ab_register_user</h2>
+<p><img alt="ab_register_user" src="../svg/ab_register_user.mmd.svg" /></p>
+<h2 id="ab_role">ab_role</h2>
+<p><img alt="ab_role" src="../svg/ab_role.mmd.svg" /></p>
+<h2 id="ab_user">ab_user</h2>
+<p><img alt="ab_user" src="../svg/ab_user.mmd.svg" /></p>
+<h2 id="ab_user_group">ab_user_group</h2>
+<p><img alt="ab_user_group" src="../svg/ab_user_group.mmd.svg" /></p>
+<h2 id="ab_user_role">ab_user_role</h2>
+<p><img alt="ab_user_role" src="../svg/ab_user_role.mmd.svg" /></p>
+<h2 id="ab_view_menu">ab_view_menu</h2>
+<p><img alt="ab_view_menu" src="../svg/ab_view_menu.mmd.svg" /></p>
+<h2 id="alembic_version">alembic_version</h2>
+<p><img alt="alembic_version" src="../svg/alembic_version.mmd.svg" /></p>
+<h2 id="alembic_version_fab">alembic_version_fab</h2>
+<p><img alt="alembic_version_fab" src="../svg/alembic_version_fab.mmd.svg" /></p>
+<h2 id="asset">asset</h2>
+<p><img alt="asset" src="../svg/asset.mmd.svg" /></p>
+<h2 id="asset_active">asset_active</h2>
+<p><img alt="asset_active" src="../svg/asset_active.mmd.svg" /></p>
+<h2 id="asset_alias">asset_alias</h2>
+<p><img alt="asset_alias" src="../svg/asset_alias.mmd.svg" /></p>
+<h2 id="asset_alias_asset">asset_alias_asset</h2>
+<p><img alt="asset_alias_asset" src="../svg/asset_alias_asset.mmd.svg" /></p>
+<h2 id="asset_alias_asset_event">asset_alias_asset_event</h2>
+<p><img alt="asset_alias_asset_event" src="../svg/asset_alias_asset_event.mmd.svg" /></p>
+<h2 id="asset_dag_run_queue">asset_dag_run_queue</h2>
+<p><img alt="asset_dag_run_queue" src="../svg/asset_dag_run_queue.mmd.svg" /></p>
+<h2 id="asset_event">asset_event</h2>
+<p><img alt="asset_event" src="../svg/asset_event.mmd.svg" /></p>
+<h2 id="asset_trigger">asset_trigger</h2>
+<p><img alt="asset_trigger" src="../svg/asset_trigger.mmd.svg" /></p>
+<h2 id="backfill">backfill</h2>
+<p><img alt="backfill" src="../svg/backfill.mmd.svg" /></p>
+<h2 id="backfill_dag_run">backfill_dag_run</h2>
+<p><img alt="backfill_dag_run" src="../svg/backfill_dag_run.mmd.svg" /></p>
+<h2 id="callback_request">callback_request</h2>
+<p><img alt="callback_request" src="../svg/callback_request.mmd.svg" /></p>
+<h2 id="celery_taskmeta">celery_taskmeta</h2>
+<p><img alt="celery_taskmeta" src="../svg/celery_taskmeta.mmd.svg" /></p>
+<h2 id="celery_tasksetmeta">celery_tasksetmeta</h2>
+<p><img alt="celery_tasksetmeta" src="../svg/celery_tasksetmeta.mmd.svg" /></p>
+<h2 id="connection">connection</h2>
+<p><img alt="connection" src="../svg/connection.mmd.svg" /></p>
+<h2 id="dag">dag</h2>
+<p><img alt="dag" src="../svg/dag.mmd.svg" /></p>
+<h2 id="dag_bundle">dag_bundle</h2>
+<p><img alt="dag_bundle" src="../svg/dag_bundle.mmd.svg" /></p>
+<h2 id="dag_code">dag_code</h2>
+<p><img alt="dag_code" src="../svg/dag_code.mmd.svg" /></p>
+<h2 id="dag_owner_attributes">dag_owner_attributes</h2>
+<p><img alt="dag_owner_attributes" src="../svg/dag_owner_attributes.mmd.svg" /></p>
+<h2 id="dag_priority_parsing_request">dag_priority_parsing_request</h2>
+<p><img alt="dag_priority_parsing_request" src="../svg/dag_priority_parsing_request.mmd.svg" /></p>
+<h2 id="dag_run">dag_run</h2>
+<p><img alt="dag_run" src="../svg/dag_run.mmd.svg" /></p>
+<h2 id="dag_run_note">dag_run_note</h2>
+<p><img alt="dag_run_note" src="../svg/dag_run_note.mmd.svg" /></p>
+<h2 id="dag_schedule_asset_alias_reference">dag_schedule_asset_alias_reference</h2>
+<p><img alt="dag_schedule_asset_alias_reference" src="../svg/dag_schedule_asset_alias_reference.mmd.svg" /></p>
+<h2 id="dag_schedule_asset_name_reference">dag_schedule_asset_name_reference</h2>
+<p><img alt="dag_schedule_asset_name_reference" src="../svg/dag_schedule_asset_name_reference.mmd.svg" /></p>
+<h2 id="dag_schedule_asset_reference">dag_schedule_asset_reference</h2>
+<p><img alt="dag_schedule_asset_reference" src="../svg/dag_schedule_asset_reference.mmd.svg" /></p>
+<h2 id="dag_schedule_asset_uri_reference">dag_schedule_asset_uri_reference</h2>
+<p><img alt="dag_schedule_asset_uri_reference" src="../svg/dag_schedule_asset_uri_reference.mmd.svg" /></p>
+<h2 id="dag_tag">dag_tag</h2>
+<p><img alt="dag_tag" src="../svg/dag_tag.mmd.svg" /></p>
+<h2 id="dag_version">dag_version</h2>
+<p><img alt="dag_version" src="../svg/dag_version.mmd.svg" /></p>
+<h2 id="dag_warning">dag_warning</h2>
+<p><img alt="dag_warning" src="../svg/dag_warning.mmd.svg" /></p>
+<h2 id="dagrun_asset_event">dagrun_asset_event</h2>
+<p><img alt="dagrun_asset_event" src="../svg/dagrun_asset_event.mmd.svg" /></p>
+<h2 id="deadline">deadline</h2>
+<p><img alt="deadline" src="../svg/deadline.mmd.svg" /></p>
+<h2 id="import_error">import_error</h2>
+<p><img alt="import_error" src="../svg/import_error.mmd.svg" /></p>
+<h2 id="job">job</h2>
+<p><img alt="job" src="../svg/job.mmd.svg" /></p>
+<h2 id="log">log</h2>
+<p><img alt="log" src="../svg/log.mmd.svg" /></p>
+<h2 id="log_template">log_template</h2>
+<p><img alt="log_template" src="../svg/log_template.mmd.svg" /></p>
+<h2 id="rendered_task_instance_fields">rendered_task_instance_fields</h2>
+<p><img alt="rendered_task_instance_fields" src="../svg/rendered_task_instance_fields.mmd.svg" /></p>
+<h2 id="serialized_dag">serialized_dag</h2>
+<p><img alt="serialized_dag" src="../svg/serialized_dag.mmd.svg" /></p>
+<h2 id="session">session</h2>
+<p><img alt="session" src="../svg/session.mmd.svg" /></p>
+<h2 id="slot_pool">slot_pool</h2>
+<p><img alt="slot_pool" src="../svg/slot_pool.mmd.svg" /></p>
+<h2 id="task_instance">task_instance</h2>
+<p><img alt="task_instance" src="../svg/task_instance.mmd.svg" /></p>
+<h2 id="task_instance_history">task_instance_history</h2>
+<p><img alt="task_instance_history" src="../svg/task_instance_history.mmd.svg" /></p>
+<h2 id="task_instance_note">task_instance_note</h2>
+<p><img alt="task_instance_note" src="../svg/task_instance_note.mmd.svg" /></p>
+<h2 id="task_map">task_map</h2>
+<p><img alt="task_map" src="../svg/task_map.mmd.svg" /></p>
+<h2 id="task_outlet_asset_reference">task_outlet_asset_reference</h2>
+<p><img alt="task_outlet_asset_reference" src="../svg/task_outlet_asset_reference.mmd.svg" /></p>
+<h2 id="task_reschedule">task_reschedule</h2>
+<p><img alt="task_reschedule" src="../svg/task_reschedule.mmd.svg" /></p>
+<h2 id="trigger">trigger</h2>
+<p><img alt="trigger" src="../svg/trigger.mmd.svg" /></p>
+<h2 id="variable">variable</h2>
+<p><img alt="variable" src="../svg/variable.mmd.svg" /></p>
+<h2 id="xcom">xcom</h2>
+<p><img alt="xcom" src="../svg/xcom.mmd.svg" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../../../assets/javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
