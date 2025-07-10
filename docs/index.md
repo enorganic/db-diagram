@@ -58,6 +58,16 @@ You can install `db-diagram` with pip:
 pip3 install db-diagram
 ```
 
+You will also need to have libraries installed for the
+[SQLAlchemy dialect](https://docs.sqlalchemy.org/en/latest/dialects/)
+corresponding to your database, unless you are using MySQL/MariaDB
+or SQLite. For convenience, installation extras are defined for a handful of
+dialects:
+
+- `pip3 install 'db-diagram[postgresql]'`
+- `pip3 install 'db-diagram[snowflake]'`
+- `pip3 install 'db-diagram[databricks]'`
+
 ## Usage
 
 You can utilize `db-diagram` as a
