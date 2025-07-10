@@ -77,119 +77,45 @@ def test_sqlite(sqlite_engine: Engine) -> None:
         directory = LIB_DATA_DIRECTORY
     # sqlite
     # Write diagrams with a depth of 1
-    write_mermaid_markdown(
-        sqlite_engine,
-        directory=directory / "depth=1/mmd",
-        depth=1,
-    )
-    write_mermaid_images(
-        sqlite_engine,
-        directory=directory / "depth=1/svg",
-        depth=1,
-        format_="svg",
-        theme="dark",
-    )
-    write_mermaid_images(
-        sqlite_engine,
-        directory=directory / "depth=1/png",
-        depth=1,
-        format_="png",
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=1/diagrams.md",
-        depth=1,
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=1/diagrams_svg.md",
-        depth=1,
-        image_directory=directory / "depth=1/svg",
-        image_format="svg",
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=1/diagrams_png.md",
-        depth=1,
-        image_directory=directory / "depth=1/png",
-        image_format="png",
-    )
-    # Write diagrams with a depth of 2
-    write_mermaid_markdown(
-        sqlite_engine,
-        directory=directory / "depth=2/mmd",
-        depth=2,
-    )
-    write_mermaid_images(
-        sqlite_engine,
-        directory=directory / "depth=2/svg",
-        depth=2,
-        format_="svg",
-        theme="dark",
-    )
-    write_mermaid_images(
-        sqlite_engine,
-        directory=directory / "depth=2/png",
-        depth=2,
-        format_="png",
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=2/diagrams.md",
-        depth=2,
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=2/diagrams_svg.md",
-        depth=2,
-        image_directory=directory / "depth=2/svg",
-        image_format="svg",
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=2/diagrams_png.md",
-        depth=2,
-        image_directory=directory / "depth=2/png",
-        image_format="png",
-    )
-    # Write diagrams with a depth of 3
-    write_mermaid_markdown(
-        sqlite_engine,
-        directory=directory / "depth=3/mmd",
-        depth=3,
-    )
-    write_mermaid_images(
-        sqlite_engine,
-        directory=directory / "depth=3/svg",
-        depth=3,
-        format_="svg",
-        theme="dark",
-    )
-    write_mermaid_images(
-        sqlite_engine,
-        directory=directory / "depth=3/png",
-        depth=3,
-        format_="png",
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=3/diagrams.md",
-        depth=3,
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=3/diagrams_svg.md",
-        depth=3,
-        image_directory=directory / "depth=3/svg",
-        image_format="svg",
-    )
-    write_markdown(
-        sqlite_engine,
-        path=directory / "depth=3/diagrams_png.md",
-        depth=3,
-        image_directory=directory / "depth=3/png",
-        image_format="png",
-    )
+    depth: int
+    for depth in range(1, 4):
+        write_mermaid_markdown(
+            sqlite_engine,
+            directory=directory / f"depth={depth}/mmd",
+            depth=depth,
+        )
+        write_mermaid_images(
+            sqlite_engine,
+            directory=directory / f"depth={depth}/svg",
+            depth=depth,
+            format_="svg",
+            theme="dark",
+        )
+        write_mermaid_images(
+            sqlite_engine,
+            directory=directory / f"depth={depth}/png",
+            depth=depth,
+            format_="png",
+        )
+        write_markdown(
+            sqlite_engine,
+            path=directory / f"depth={depth}/diagrams.md",
+            depth=depth,
+        )
+        write_markdown(
+            sqlite_engine,
+            path=directory / f"depth={depth}/diagrams_svg.md",
+            depth=depth,
+            image_directory=directory / f"depth={depth}/svg",
+            image_format="svg",
+        )
+        write_markdown(
+            sqlite_engine,
+            path=directory / f"depth={depth}/diagrams_png.md",
+            depth=depth,
+            image_directory=directory / f"depth={depth}/png",
+            image_format="png",
+        )
     # Verify the new/old files are the same
     if directory is not LIB_DATA_DIRECTORY:
         _validate_files(directory, LIB_DATA_DIRECTORY)
@@ -210,39 +136,53 @@ def test_cli_sqlite(sqlite_engine: Engine) -> None:
         directory = CLI_DATA_DIRECTORY
     # sqlite
     # Write diagrams with a depth of 1
-    url: str = str(sqlite_engine.url)
-    check_output(
-        (
-            sys.executable,
-            "-m",
-            "db_diagram",
-            url,
-            "-d",
-            "1",
-            "-mmd",
-            str(directory / "depth=1/mmd"),
-            "-svg",
-            str(directory / "depth=1/svg"),
-            "-md",
-            str(directory / "depth=1/diagrams_svg.md"),
+    depth: str
+    for depth in map(str, range(1, 4)):
+        url: str = str(sqlite_engine.url)
+        check_output(
+            (
+                sys.executable,
+                "-m",
+                "db_diagram",
+                url,
+                "-d",
+                depth,
+                "-mmd",
+                str(directory / f"depth={depth}/mmd"),
+                "-svg",
+                str(directory / f"depth={depth}/svg"),
+                "-md",
+                str(directory / f"depth={depth}/diagrams_svg.md"),
+            )
         )
-    )
-    check_output(
-        (
-            sys.executable,
-            "-m",
-            "db_diagram",
-            url,
-            "-d",
-            "1",
-            "-mmd",
-            str(directory / "depth=1/mmd"),
-            "-png",
-            str(directory / "depth=1/png"),
-            "-md",
-            str(directory / "depth=1/diagrams_png.md"),
+        check_output(
+            (
+                sys.executable,
+                "-m",
+                "db_diagram",
+                url,
+                "-d",
+                depth,
+                "-mmd",
+                str(directory / f"depth={depth}/mmd"),
+                "-png",
+                str(directory / f"depth={depth}/png"),
+                "-md",
+                str(directory / f"depth={depth}/diagrams_png.md"),
+            )
         )
-    )
+        check_output(
+            (
+                sys.executable,
+                "-m",
+                "db_diagram",
+                url,
+                "-d",
+                "1",
+                "-md",
+                str(directory / f"depth={depth}/diagrams.md"),
+            )
+        )
 
 
 if __name__ == "__main__":
