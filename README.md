@@ -47,6 +47,6 @@ if you want to generate diagrams from [SQLAlchemy metadata
 a connection URL, such as you might for a
 [SQLAlchemy ORM](https://docs.sqlalchemy.org/en/latest/orm/),
 you will want to use `db_diagram` as a python library.
-Pease refer to [these examples](https://db-diagram.enorganic.or/examples/)
+Pease refer to [these examples](https://db-diagram.enorganic.org/examples/)
 for reference concerning output.
 
