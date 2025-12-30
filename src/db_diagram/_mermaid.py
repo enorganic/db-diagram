@@ -51,6 +51,7 @@ import sys
 import tempfile
 from collections import deque
 from concurrent.futures import ProcessPoolExecutor
+from contextlib import suppress
 from fnmatch import fnmatch
 from itertools import chain
 from operator import itemgetter
@@ -82,6 +83,11 @@ from db_diagram._utilities import (
 if TYPE_CHECKING:
     from collections.abc import Hashable, Iterable
 
+with suppress(ImportError):
+    # Patch the databricks dialect, if extras for that dialect are installed
+    from db_diagram import _databricks  # noqa: F401
+
+
 DEFAULT_CONFIG: dict[str, Hashable] = {
     # The default value would be 5000, which is too small for typical
     # entity relationship diagrams describing a database
@@ -89,8 +95,18 @@ DEFAULT_CONFIG: dict[str, Hashable] = {
 }
 
 
-def _get_quoted_table_name(table: Table) -> str:
-    return f'"{table.key}"' if "." in table.key else table.key
+def quote(name: str) -> str:
+    """
+    Quote the specified name for use in a mermaid diagram.
+
+    Parameters:
+        name: The name to quote
+    """
+    return (
+        f'"{name}"'
+        if ("." in name) and not (name.startswith('"') and name.endswith('"'))
+        else name
+    )
 
 
 def _iter_table_mermaid_entity(
@@ -107,7 +123,7 @@ def _iter_table_mermaid_entity(
         depth: The depth of the relationship graph to include
         include_tables:
     """
-    yield f"    {table.key} {{"
+    yield f"    {quote(table.key)} {{"
     column_type: str
     key: str
     column: Column
@@ -142,11 +158,11 @@ def _iter_table_mermaid_entity(
         ),
         key=lambda foreign_key_constraint: (
             cast(
-                ForeignKeyConstraint,
+                "ForeignKeyConstraint",
                 foreign_key_constraint,
             ).referred_table.name,
             cast(
-                ForeignKeyConstraint,
+                "ForeignKeyConstraint",
                 foreign_key_constraint,
             ).column_keys,
         ),
@@ -160,7 +176,7 @@ def _iter_table_mermaid_entity(
             foreign_key.column.name
             for foreign_key in foreign_key_constraint.elements
         )
-        table_name: str = _get_quoted_table_name(table)
+        table_name: str = quote(table.key)
         if column_names == referred_column_names:
             yield (
                 f"    {table_name} }}o--|| {referred_table_name} : "
@@ -284,6 +300,7 @@ def iter_tables_mermaid_diagrams(
     arguments: Iterable[tuple[Table, int]] = zip(
         tables,
         (depth,) * class_count,
+        strict=False,
     )
     yield from sorted(
         ProcessPoolExecutor().map(_get_class_table_diagram, arguments)
@@ -332,7 +349,9 @@ def write_markdown(  # noqa: C901
     if isinstance(image_directory, str) and image_directory:
         image_directory = Path(image_directory)
     if image_directory:
-        image_directory = cast(Path, image_directory).relative_to(path.parent)
+        image_directory = cast("Path", image_directory).relative_to(
+            path.parent
+        )
     if not title:
         title = path.stem
     if not path.parent.exists():
@@ -470,14 +489,14 @@ def install_npm(*, force: bool = False) -> str:
     line: str
     if sys.platform.startswith("win"):
         for line in _WINDOWS_INSTALL_NPM.strip().splitlines():
-            check_call(
+            check_call(  # noqa: S602
                 line,
-                shell=True,  # noqa: S602
+                shell=True,
             )
     else:
-        check_call(
+        check_call(  # noqa: S602
             _POSIX_INSTALL_NPM.strip(),
-            shell=True,  # noqa: S602
+            shell=True,
         )
     return which("npm") or "npm"
 

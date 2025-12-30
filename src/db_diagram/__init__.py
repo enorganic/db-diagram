@@ -8,6 +8,6 @@ from db_diagram._mermaid import (
 
 __all__: tuple[str, ...] = (
     "write_markdown",
-    "write_mermaid_markdown",
     "write_mermaid_images",
+    "write_mermaid_markdown",
 )
