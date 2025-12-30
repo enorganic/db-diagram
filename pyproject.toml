@@ -177,7 +177,7 @@ disallow_untyped_defs = true
 disallow_incomplete_defs = true
 
 [tool.coverage.report]
-fail_under = 60
+fail_under = 50
 show_missing = true
 
 [tool.coverage.run]

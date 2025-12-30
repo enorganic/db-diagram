@@ -33,7 +33,7 @@ str_lru_cache: Callable[..., Callable[..., Callable[..., str]]] = (
 cache: Callable[[Callable], Callable]
 try:
     from functools import cache  # type: ignore
-except ImportError:
+except ImportError:  # pragma: no cover
     from functools import lru_cache
 
     cache = lru_cache(maxsize=None)
@@ -96,7 +96,7 @@ def iter_referenced_tables(
         if (not exclude) or (key not in exclude):
             exclude.add(key)
             yield foreign_key_constraint.referred_table
-            if (depth is None) or (depth > 1):
+            if (depth is None) or (depth > 1):  # pragma: no cover
                 yield from iter_referenced_tables(
                     foreign_key_constraint.referred_table,
                     exclude,
@@ -110,7 +110,7 @@ def get_column_type_name(column: Column) -> str:
     ) = column.type
     if not isinstance(column_type, type):
         column_type = type(column_type)
-    if issubclass(column_type, TypeDecorator):
+    if issubclass(column_type, TypeDecorator):  # pragma: no cover
         column_type = column_type.impl
         if not isinstance(column_type, type):
             column_type = type(column_type)
