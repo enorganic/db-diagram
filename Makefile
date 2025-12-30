@@ -1,6 +1,6 @@
 SHELL := bash
 .PHONY: docs
-MINIMUM_PYTHON_VERSION := 3.9
+MINIMUM_PYTHON_VERSION := 3.10
 
 # Create all environments
 install:
@@ -38,7 +38,7 @@ upgrade:
 	 --include-pointer /tool/hatch/envs/docs\
 	 --include-pointer /project\
 	 pyproject.toml && \
-	hatch run hatch-test.py$(PYTHON_VERSION):dependence upgrade\
+	hatch run hatch-test.py$(MINIMUM_PYTHON_VERSION):dependence upgrade\
 	 --include-pointer /tool/hatch/envs/hatch-test\
 	 --include-pointer /project\
 	 pyproject.toml

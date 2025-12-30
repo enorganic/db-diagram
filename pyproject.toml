@@ -6,11 +6,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "db-diagram"
-version = "0.0.0"
+version = "0.0.1"
 description = "Create Database Entity Relationship Diagrams"
 readme = "README.md"
 license = "MIT"
-requires-python = "~=3.9"
+requires-python = "~=3.10"
 authors = [
     { email = "david@belais.me" },
 ]
@@ -27,10 +27,10 @@ databricks = [
     "databricks-sqlalchemy~=2.0",
 ]
 snowflake = [
-    "snowflake-sqlalchemy~=1.7",
+    "snowflake-sqlalchemy~=1.8",
 ]
 postgresql = [
-    "psycopg~=3.2.9",
+    "psycopg~=3.3",
 ]
 
 [project.scripts]
@@ -57,12 +57,12 @@ sources = [
 ]
 
 [tool.hatch.envs.default]
-python = "3.9"
+python = "3.10"
 dependencies = [
-    "gittable~=0.0",
+    "gittable~=0.2",
     "pytest",
     "mypy",
-    "dependence~=1.1",
+    "dependence~=1.2",
     "python-dotenv",
     "pyyaml~=6.0",
 ]
@@ -79,7 +79,7 @@ pre-install-commands = [
 extra-dependencies = [
     "pytest",
     "mypy",
-    "dependence~=1.1",
+    "dependence~=1.2",
 ]
 pre-install-commands = [
     "pip install --upgrade pip",
@@ -94,7 +94,7 @@ dependencies = [
     "mkdocs-material",
     "mkdocstrings[python]",
     "black",
-    "dependence~=1.1",
+    "dependence~=1.2",
     "mkdocs-mermaid2-plugin",
     "pyyaml~=6.0",
 ]
@@ -103,7 +103,7 @@ post-install-commands = []
 
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
-    "dependence~=1.1",
+    "dependence~=1.2",
     "python-dotenv",
 ]
 extra-args = [
@@ -120,7 +120,6 @@ randomize = true
 
 [[tool.hatch.envs.hatch-test.matrix]]
 python = [
-    "3.9",
     "3.10",
     "3.11",
     "3.12",
@@ -166,7 +165,7 @@ target-version = [
 ]
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.10"
 files = [
     "src",
     "tests",

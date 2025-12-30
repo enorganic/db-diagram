@@ -3,9 +3,17 @@ from __future__ import annotations
 import functools
 import os
 from itertools import chain
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, NamedTuple
 
-from sqlalchemy import URL, Column, Connection, Engine, MetaData, create_engine
+from sqlalchemy import (
+    Column,
+    Connection,
+    Engine,
+    MetaData,
+    create_engine,
+    make_url,
+)
+from sqlalchemy.engine.url import URL
 from sqlalchemy.sql.schema import Constraint, ForeignKeyConstraint, Table
 from sqlalchemy.types import TypeDecorator, TypeEngine
 
@@ -206,6 +214,81 @@ def get_table_primary_key_and_column_names(
     return tuple(primary_key_column_names), tuple(other_column_names)
 
 
+def get_bind_dialect_name(
+    bind: Engine | Connection | str | URL | None,
+) -> str:
+    """
+    Given a connectable `bind` (connection or engine) object, return the name
+    of the dialect used (for example: "sqlite", "snowflake",
+    or "postgresql").
+    """
+    dialect_name: str | bytes = "default"
+    if isinstance(bind, URL):
+        dialect_name = bind.drivername
+    elif isinstance(bind, str):
+        dialect_name = bind.partition("://")[0].partition("+")[0].lower()
+    elif isinstance(bind, Engine):
+        dialect_name = bind.dialect.name
+    elif isinstance(bind, Connection):
+        dialect_name = bind.engine.dialect.name
+    if isinstance(dialect_name, bytes):
+        dialect_name = dialect_name.decode("utf-8")
+    return dialect_name.partition("+")[0].lower()
+
+
+class DatabaseSchema(NamedTuple):
+    database: str | None
+    schema: str | None
+
+
+def get_bind_database_schema(
+    bind: Connection | Engine | URL | str,
+) -> DatabaseSchema:
+    """
+    Returns the database and schema name from an engine, connection, connection
+    URL, or connection string.
+    """
+    dialect_name: str = get_bind_dialect_name(bind)
+    if dialect_name == "sqlite":
+        return DatabaseSchema(None, None)
+    url: URL = (
+        bind.engine.url
+        if isinstance(bind, Connection)
+        else (
+            bind.url
+            if isinstance(bind, Engine)
+            else (bind if isinstance(bind, URL) else make_url(bind))
+        )
+    )
+    url_query_schema: tuple[str, ...] | str | None = url.query.get("schema")
+    schema: str | None = (
+        url_query_schema[0]
+        if isinstance(url_query_schema, tuple)
+        else url_query_schema
+    )
+    if dialect_name == "databricks":
+        url_query_catalog: tuple[str, ...] | str | None = url.query.get(
+            "catalog"
+        )
+        catalog: str | None = (
+            url_query_catalog[0]
+            if isinstance(url_query_catalog, tuple)
+            else url_query_catalog
+        )
+        return DatabaseSchema(catalog, schema)
+    if url.database:
+        database: str
+        database_schema: str
+        database, _, database_schema = url.database.partition("/")
+        if dialect_name == "snowflake":
+            # Snowflake appends the schema to the database name
+            schema = database_schema or schema or None
+        elif not schema:
+            schema = database_schema or None
+        return DatabaseSchema(database, schema)
+    return DatabaseSchema(None, schema)
+
+
 def get_bind_metadata(bind: str | URL | Engine | Connection) -> MetaData:
     """
     Get SQLAlchemy metadata for a connection string, engine, or connection.
@@ -213,5 +296,14 @@ def get_bind_metadata(bind: str | URL | Engine | Connection) -> MetaData:
     if isinstance(bind, (str, URL)):
         bind = create_engine(bind)
     metadata: MetaData = MetaData()
+    bind_database_schema: DatabaseSchema = get_bind_database_schema(bind)
     metadata.reflect(bind=bind, views=True, resolve_fks=True)
+    # Re-key `metadata.tables` so that catalog/database and schema names
+    # are removed if they match the bind's database and schema
+    table: Table
+    for key, table in tuple(metadata.tables.items()):
+        if table.schema and bind_database_schema.schema == table.schema:
+            dict.__setitem__(metadata.tables, table.name, table)
+            dict.__delitem__(metadata.tables, key)
+            table.schema = None
     return metadata

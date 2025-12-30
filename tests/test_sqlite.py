@@ -40,8 +40,7 @@ def _validate_files(directory: Path, reference_directory: Path) -> None:
     file_paths: set[str] = set(map(str, files))
     reference_file_paths: set[str] = set(map(str, reference_files))
     assert file_paths == reference_file_paths, (
-        f"\n{directory.absolute()!s}\n!=\n"
-        f"{reference_directory.absolute()!s}"
+        f"\n{directory.absolute()!s}\n!=\n{reference_directory.absolute()!s}"
     )
     for path in files:
         if path.suffix in (".svg", ".png"):
@@ -53,12 +52,7 @@ def _validate_files(directory: Path, reference_directory: Path) -> None:
         reference_file: Path = reference_directory.joinpath(path)
         reference_text: str = reference_file.read_text().strip()
         assert text == reference_text, (
-            f"\n{file}\n"
-            "!=\n"
-            f"{reference_file}\n\n"
-            f"{text}\n"
-            "!=\n"
-            f"{reference_text}"
+            f"\n{file}\n!=\n{reference_file}\n\n{text}\n!=\n{reference_text}"
         )
 
 
